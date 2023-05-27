@@ -20,6 +20,7 @@ const postOEMs = async (req, res) => {
           // Post OEM-specs in the database
           await oemSpecModel.insertMany([
                {
+                    "brand": "Honda",
                     "model": "Honda City",
                     "year": 2021,
                     "listPrice": 20000,
@@ -29,6 +30,7 @@ const postOEMs = async (req, res) => {
                     "maxSpeed": 180
                },
                {
+                    "brand": "Toyota",
                     "model": "Toyota Corolla",
                     "year": 2018,
                     "listPrice": 18000,
@@ -38,6 +40,7 @@ const postOEMs = async (req, res) => {
                     "maxSpeed": 170
                },
                {
+                    "brand": "BMW",
                     "model": "BMW 3 Series",
                     "year": 2019,
                     "listPrice": 30000,
@@ -47,6 +50,7 @@ const postOEMs = async (req, res) => {
                     "maxSpeed": 200
                },
                {
+                    "brand": "Audi",
                     "model": "Audi A4",
                     "year": 2020,
                     "listPrice": 28000,
@@ -56,6 +60,7 @@ const postOEMs = async (req, res) => {
                     "maxSpeed": 190
                },
                {
+                    "brand": "Mercedes-Benz",
                     "model": "Mercedes-Benz C-Class",
                     "year": 2017,
                     "listPrice": 25000,
@@ -65,6 +70,7 @@ const postOEMs = async (req, res) => {
                     "maxSpeed": 180
                },
                {
+                    "brand": "Maruti",
                     "model": "Maruti Swift",
                     "year": 2019,
                     "listPrice": 12000,
@@ -74,6 +80,7 @@ const postOEMs = async (req, res) => {
                     "maxSpeed": 150
                },
                {
+                    "brand": "Hyundai",
                     "model": "Hyundai Tucson",
                     "year": 2020,
                     "listPrice": 22000,
@@ -83,6 +90,7 @@ const postOEMs = async (req, res) => {
                     "maxSpeed": 180
                },
                {
+                    "brand": "Ford",
                     "model": "Ford Mustang",
                     "year": 2018,
                     "listPrice": 35000,
@@ -92,6 +100,7 @@ const postOEMs = async (req, res) => {
                     "maxSpeed": 250
                },
                {
+                    "brand": "Chevrolet",
                     "model": "Chevrolet Camaro",
                     "year": 2019,
                     "listPrice": 33000,
@@ -101,6 +110,7 @@ const postOEMs = async (req, res) => {
                     "maxSpeed": 240
                },
                {
+                    "brand": "Nissan",
                     "model": "Nissan Altima",
                     "year": 2020,
                     "listPrice": 19000,
