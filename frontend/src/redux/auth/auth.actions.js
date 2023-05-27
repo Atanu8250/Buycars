@@ -13,8 +13,8 @@ import * as authTypes from './auth.types';
 
 /**
  * - SIGNIN FOR USERS
- * @param {cred} cred - credentials for signin `cred: {username, password}`
- * @param {navigate} navigate - navigate for navigating the user to the `event` page
+ * @param {Object} cred - credentials for signin `cred: {username, password}`
+ * @param {Function} navigate - navigate for navigating the user to the `event` page
  * */
 export const signinAction = (cred, navigate) => async (dispatch) => {
      if (!cred.email || !cred.password) return;
@@ -52,8 +52,8 @@ export const signinAction = (cred, navigate) => async (dispatch) => {
 
 /**
  * - SIGNUP FOR USERS
- * @param {cred} cred - credentials for signin `cred: {username, password}`
- * @param {gotoSignin} gotoSignin - navigate for send the user to the `sign-in` component
+ * @param {Object} cred - credentials for signin `cred: {username, password}`
+ * @param {Function} gotoSignin - navigate for send the user to the `sign-in` component
  * */
 export const signupAction = (cred, gotoSignin) => async (dispatch) => {
      if (!cred.username || !cred.email || !cred.password) return;

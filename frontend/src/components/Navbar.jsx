@@ -1,6 +1,42 @@
+import { useEffect, useState } from 'react'
+import style from '../styles/Navbar.module.css';
+import { Link } from 'react-router-dom';
+import { FaUserShield, FaRegUserCircle } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
+
 function Navbar() {
+     const { user } = useSelector(store => store.authManager);
+     const [userFromSs, setUserFromSs] = useState(sessionStorage.getItem("USERNAME") || "");
+
+     useEffect(() => {
+          if (user.name) setUserFromSs(user.name);
+     }, [user])
+
      return (
-          <div>Navbar</div>
+          <header className={style.Navbar}>
+               <Link to='/' className={style.logo}>
+                    <img src="car-logo.png" alt="logo" />
+                    <h1>Buycars</h1>
+               </Link>
+
+               <nav>
+                    <ul>
+                         <li><Link to="/">Home</Link></li>
+                         <li>
+                              {
+                                   userFromSs ? <a href='#'>
+                                        <FaRegUserCircle />
+                                        {userFromSs}
+                                   </a> :
+                                        <Link to="/auth">
+                                             <FaUserShield />
+                                             <span>Sign in</span>
+                                        </Link>
+                              }
+                         </li>
+                    </ul>
+               </nav>
+          </header>
      )
 }
 

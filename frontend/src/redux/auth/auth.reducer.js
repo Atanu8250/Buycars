@@ -24,7 +24,7 @@ export const reducer = (state = initialState, { type, payload }) => {
 
           case authTypes.AUTH_LOGIN_SUCCESS: {
                sessionStorage.setItem("TOKEN", payload.token);
-               sessionStorage.setItem("USERNAME", payload.username);
+               sessionStorage.setItem("USERNAME", payload.name);
                return { loading: false, error: false, isAuth: true, user: payload }
           }
 
