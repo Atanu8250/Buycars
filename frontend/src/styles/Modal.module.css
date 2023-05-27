@@ -1,0 +1,128 @@
+.modal {
+     position: fixed;
+     top: 0;
+     left: 0;
+     background-color: rgba(0, 0, 0, 0.473);
+     width: 100%;
+     height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     z-index: 10 !important;
+}
+
+.modal-content {
+     position: relative;
+     max-width: 500px;
+     background-color: var(--primary-text-color-white);
+     border-radius: 10px;
+     padding: 20px;
+
+}
+
+.modal-header>svg {
+     position: absolute;
+     top: 10px;
+     right: 10px;
+     color: var(--primary-theme-color-red);
+     font-size: var(--primary-font-heading-large);
+}
+
+.modal-sub-headings {
+     margin: 8px 0px;
+}
+
+.modal-body {
+     display: flex;
+     gap: 10px;
+     flex-direction: column;
+     margin: 10px 0px;
+     max-height: 80vh;
+}
+
+.modal-cast {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 10px;
+}
+
+.modal-cast>div {
+     padding: 8px 20px;
+     border-radius: 10px;
+     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+     display: flex;
+     gap: 10px;
+     flex-direction: column;
+}
+
+bdi {
+     color: var(--primary-theme-color-red);
+     font-weight: var(--primary-font-weight-medium);
+}
+
+.cast-adding {
+     display: flex;
+     gap: 10px;
+     flex-wrap: wrap;
+     max-height: 50px;
+     overflow-y: scroll;
+}
+
+.cast-adding>div {
+     border-radius: 10px;
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+     padding: 5px;
+}
+
+.cast-input {
+     display: flex;
+     gap: 10px;
+     align-items: center;
+     flex-wrap: wrap;
+     justify-content: center;
+}
+
+.cast-input>input {
+     height: 40px;
+     padding-left: 10px;
+     border: none;
+     border-radius: 5px;
+     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.genre-adding {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     gap: 10px;
+}
+
+.genre-adding>input {
+     width: 100%;
+}
+
+.delete-movie {
+     position: absolute;
+     color: var(--primary-theme-color-red);
+     right: 10px;
+     bottom: 10px;
+     font-size: var(--primary-font-heading-large);
+}
+
+.edit-movie {
+     position: absolute;
+     color: blue;
+     right: 45px;
+     bottom: 10px;
+     font-size: var(--primary-font-heading-large);
+}
+
+
+@media only screen and (max-width:425px) {
+     .add-new-movie {
+          font-size: var(--primary-font-heading-medium);
+     }
+}

@@ -1,0 +1,72 @@
+.functionalities {
+     display: flex;
+     align-items: center;
+     width: 100%;
+     padding: 15px 20px;
+     gap: 10px;
+}
+
+.search {
+     display: flex;
+     border: 1px solid var(--apple-red-color);
+     padding: 5px 15px;
+     border-radius: 16px;
+     justify-content: center;
+     align-items: center;
+     gap: 5px;
+}
+
+.search>input {
+     font-size: 17px;
+     outline: none;
+     border: none;
+}
+
+.search>svg {
+     cursor: pointer;
+}
+
+.color-select {
+     border: 1px solid var(--apple-red-color);
+     margin-left: auto;
+     font-size: 17px;
+     padding: 5px 15px;
+     border-radius: 16px;
+}
+
+.mileage-filter,
+.price-filter {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-weight: 600;
+     font-size: 17px;
+     padding: 5px 15px;
+     border-radius: 16px;
+}
+
+.mileage-filter>span,
+.price-filter>span {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     gap: 5px;
+}
+
+.mileage-filter input,
+.price-filter input {
+     width: 6rem;
+     font-size: 17px;
+     outline: none;
+     border: none;
+     border-bottom: 2px solid var(--apple-red-color);
+     padding: 4px;
+}
+
+
+.cars {
+     display: grid;
+     padding: 15px 30px;
+     gap: 15px 20px;
+     grid-template-columns: repeat(2, 1fr);
+}
