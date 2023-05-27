@@ -50,7 +50,7 @@ const Card = ({ element }) => {
                               <bdi>Colors</bdi>
                               {oemSpec?.colors?.map((ele, i) => {
                                    return <span key={i} style={{
-                                        height: "20px", width: "20px", borderRadius: "50 % ", backgroundColor: ele.toLowerCase(), display: 'inline-block', marginRight: "5px"
+                                        height: "20px", width: "20px", borderRadius: "50% ", backgroundColor: ele.toLowerCase(), display: 'inline-block', marginRight: "5px"
                                    }}></span>
                               })}</div>
                     </div>

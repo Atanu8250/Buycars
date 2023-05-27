@@ -17,7 +17,7 @@ function Home() {
      }, [])
 
      return loading ? <h1>Loading...</h1> : (
-          <div className={style.container}>
+          <div>
                <div className={style.functionalities}>
                     <div className={style.search}>
                          <input type="search" placeholder='Serach herer!' />
