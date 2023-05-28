@@ -64,10 +64,32 @@ nav a {
      background-color: var(--apple-red-color);
      color: #fff;
      transition: background-color ease 400ms;
+     position: relative;
 }
 
 nav a:hover {
      border: 1px solid var(--apple-red-color);
      background-color: transparent;
      color: var(--apple-red-color);
+}
+
+.profile-btn:hover .hidden-logout{
+     display: block;
+}
+
+.hidden-logout {
+     display: none;
+     cursor: pointer;
+     position: absolute;
+     bottom: -30px;
+     left: 25px;
+}
+
+.hidden-logout>button {
+     border-radius: 8px;
+     padding: 4px 15px;
+     letter-spacing: 1px;
+     border: 1px solid transparent;
+     background-color: var(--apple-red-color);
+     color: #fff;
 }

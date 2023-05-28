@@ -88,3 +88,12 @@ export const signupAction = (cred, gotoSignin) => async (dispatch) => {
           alert(error.message);
      }
 }
+
+
+/**
+ * for log-out only
+ * */ 
+export const logoutAction = () => (dispatch) => {
+     dispatch({ type: authTypes.AUTH_LOGOUT });
+     window.location.replace('/auth')
+}

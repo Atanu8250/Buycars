@@ -1,12 +1,19 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import style from '../styles/Navbar.module.css';
 import { Link } from 'react-router-dom';
 import { FaUserShield, FaRegUserCircle } from 'react-icons/fa';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutAction } from '../redux/auth/auth.actions';
 
 function Navbar() {
      const { user } = useSelector(store => store.authManager);
+     const dispatch = useDispatch();
      const [userFromSs, setUserFromSs] = useState(sessionStorage.getItem("USERNAME") || "");
+
+     const handleLogout = useCallback(() => {
+          console.log('first')
+          dispatch(logoutAction());
+     }, [dispatch])
 
      useEffect(() => {
           if (user.name) setUserFromSs(user.name);
@@ -25,9 +32,12 @@ function Navbar() {
                          <li><Link to="/sell-car">Sell Car</Link></li>
                          <li>
                               {
-                                   userFromSs ? <a href='#'>
+                                   userFromSs ? <a href='#' className={style['profile-btn']}>
                                         <FaRegUserCircle />
                                         {userFromSs}
+                                        <div className={style['hidden-logout']}>
+                                             <button onClick={handleLogout}>Log out</button>
+                                        </div>
                                    </a> :
                                         <Link to="/auth">
                                              <FaUserShield />
