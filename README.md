@@ -40,6 +40,7 @@ Sign-in with your unique credentails [email, password]
 
 ### :small_blue_diamond: Home Page
 After successfully authenticated you will be redirected to HOME page, there you will see the list of products, and if you sell any car, for that specific product you will be able to see an edit and delete button. You can change or delete data of your sell product only!
+You can search for specific car, apply filter on color and price range/ mileage range
 
 ----
 ![home](https://github.com/Atanu8250/Buycars/assets/94675329/3f39e5d1-5e48-471f-8fae-de13adf5ac96)
