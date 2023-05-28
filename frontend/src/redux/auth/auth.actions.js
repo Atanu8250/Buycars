@@ -95,5 +95,5 @@ export const signupAction = (cred, gotoSignin) => async (dispatch) => {
  * */ 
 export const logoutAction = () => (dispatch) => {
      dispatch({ type: authTypes.AUTH_LOGOUT });
-     window.location.replace('/auth')
+     window.location.replace('/')
 }

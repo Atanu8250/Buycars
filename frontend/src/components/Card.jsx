@@ -42,7 +42,7 @@ const Card = ({ element }) => {
                     <div>
                          <div>
                               <bdi>Brand</bdi>
-                              <span>{"Honda"}</span>
+                              <span>{oemSpec?.brand}</span>
                          </div>
                          <div>
                               <bdi>Model</bdi>

@@ -5,6 +5,20 @@ import { BsSearch } from 'react-icons/bs';
 import { getAllCarsAction } from '../redux/cars/cars.actions';
 import Card from '../components/Card';
 
+// Debouncer closure function for debouncing
+const debouncer = (cb, delay) => {
+     let timerRef;
+     return () => {
+          if (timerRef) {
+               clearTimeout(timerRef);
+               timerRef = undefined;
+          }
+          timerRef = setTimeout(cb, delay);
+     }
+
+}
+
+
 function Home() {
      const dispatch = useDispatch();
 
@@ -30,6 +44,9 @@ function Home() {
           setQueryUrl(url);
      }, []);
 
+     // debouncing for URL search and filters
+     const debounce = debouncer(createQueryUrl, 600);
+
 
      useEffect(() => {
           dispatch(getAllCarsAction(queryUrl))
@@ -39,23 +56,28 @@ function Home() {
           <div>
                <div className={style.functionalities}>
                     <div className={style.search}>
-                         <input type="search" placeholder='Serach herer!' ref={searchRef} />
+                         <input type="search" placeholder='Serach herer!' ref={searchRef} onInput={debounce} />
                          <BsSearch onClick={createQueryUrl} />
                     </div>
 
                     {/* Choose color */}
-                    <select className={style['color-select']} ref={colorRef} onChange={createQueryUrl}>
+                    <select className={style['color-select']} ref={colorRef} onChange={debounce}>
                          <option value="">Choose color</option>
-                         <option value="red">Red</option>
-                         <option value="blue">Blue</option>
+                         <option value="White">White</option>
+                         <option value="Silver">Silver</option>
+                         <option value="Black">Black</option>
+                         <option value="Gray">Gray</option>
+                         <option value="Red">Red</option>
+                         <option value="Blue">Blue</option>
+                         <option value="Yellow">Yellow</option>
                     </select>
 
                     {/* Filter on Pricing */}
                     <div className={style["price-filter"]}>
                          <bdi>Price:</bdi>
                          <span>
-                              <input type="number" placeholder='Min price' min={0} ref={minpriceRef} onInput={createQueryUrl} />
-                              <input type="number" placeholder='Max price' min={0} ref={maxpriceRef} onInput={createQueryUrl} />
+                              <input type="number" placeholder='Min price' min={0} ref={minpriceRef} onInput={debounce} />
+                              <input type="number" placeholder='Max price' min={0} ref={maxpriceRef} onInput={debounce} />
                          </span>
                     </div>
 
@@ -63,8 +85,8 @@ function Home() {
                     <div className={style["mileage-filter"]}>
                          <bdi>Mileage:</bdi>
                          <span>
-                              <input type="number" placeholder='Min mileage' min={0} ref={minmileageRef} onInput={createQueryUrl} />
-                              <input type="number" placeholder='Max mileage' min={0} ref={maxmileageRef} onInput={createQueryUrl} />
+                              <input type="number" placeholder='Min mileage' min={0} ref={minmileageRef} onInput={debounce} />
+                              <input type="number" placeholder='Max mileage' min={0} ref={maxmileageRef} onInput={debounce} />
                          </span>
                     </div>
                </div>
