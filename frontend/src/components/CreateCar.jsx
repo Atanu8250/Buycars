@@ -25,7 +25,7 @@ function CreateCar({ oemId }) {
 
           e.target.reset();
 
-     }, [oemId]);
+     }, [dispatch, oemId]);
 
      return (
           <div className={style['form-container']}>

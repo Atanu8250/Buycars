@@ -103,12 +103,12 @@ export const createCarAction = (car) => async (dispatch) => {
  * */
 export const updateCarAction = ({ carId, update }) => async (dispatch) => {
      if (!carId || Object.keys(update).length === 0) return;
-
+     console.log({ carId, update })
      // start loading
      dispatch({ type: carsTypes.CARS_LOADING })
 
      try {
-          const res = await fetch(`${import.meta.env.VITE_APP_SERVER_URL}/marketplace/:${carId}`, {
+          const res = await fetch(`${import.meta.env.VITE_APP_SERVER_URL}/marketplace/${carId}`, {
                method: 'PATCH',
                body: JSON.stringify(update),
                headers: {

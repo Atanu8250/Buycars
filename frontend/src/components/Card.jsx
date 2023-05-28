@@ -2,14 +2,25 @@
 import Styles from "../styles/Card.module.css";
 import { AiFillEdit } from "react-icons/ai";
 import { MdDeleteOutline } from "react-icons/md";
+import Modal from "./Modal";
+import { useCallback, useState } from "react";
 
 
 
 const Card = ({ element }) => {
+     const loggedInUser = sessionStorage.getItem("USERNAME");
      // eslint-disable-next-line react/prop-types
      const { carImage, dealer, majorScratches, noOfAccidents, noOfPreviousBuyers, odometer, oemSpec, originalPaint, registrationPlace } = element;
+     const [isModalOpen, setIsModalOpen] = useState(false);
 
-     const loggedInUser = sessionStorage.getItem("USERNAME");
+     const closeModal = useCallback(() => {
+          setIsModalOpen(false);
+     }, [])
+
+     const openModal = useCallback(() => {
+          setIsModalOpen(true);
+     }, [])
+
 
      return (
           <div className={Styles.card_container}>
@@ -28,11 +39,11 @@ const Card = ({ element }) => {
                          </div>
                          <div>
                               <bdi>Price</bdi>
-                              <span>{oemSpec?.listPrice}</span>
+                              <span>₹{oemSpec?.listPrice} /-</span>
                          </div>
                          <div>
                               <bdi>Max Speed</bdi>
-                              <span>{oemSpec?.maxSpeed}</span>
+                              <span>{oemSpec?.maxSpeed} KM/H</span>
                          </div>
                          <div>
                               <bdi>Mileage</bdi>
@@ -40,7 +51,7 @@ const Card = ({ element }) => {
                          </div>
                          <div>
                               <bdi>Power</bdi>
-                              <span>{oemSpec?.power}</span>
+                              <span>{oemSpec?.power} BHP</span>
                          </div>
                          <div>
                               <bdi>Official Launch</bdi>
@@ -68,7 +79,7 @@ const Card = ({ element }) => {
                                         </div>
                                         :
                                         <div>
-                                             <button><bdi>Edit</bdi><AiFillEdit /></button>
+                                             <button onClick={openModal}><bdi>Edit</bdi><AiFillEdit /></button>
                                              <button><bdi>Delete</bdi><MdDeleteOutline /></button>
                                         </div>
                               }
@@ -85,6 +96,13 @@ const Card = ({ element }) => {
                          </div>
                     </div>
                </div>
+
+               {/* Edit modal */}
+               <Modal
+                    isOpen={isModalOpen}
+                    onClose={closeModal}
+                    element={element}
+               />
           </div>
      )
 }
