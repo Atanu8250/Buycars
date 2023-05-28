@@ -7,6 +7,8 @@ import { createCarAction } from '../redux/cars/cars.actions';
 function CreateCar({ oemId }) {
      const dispatch = useDispatch();
 
+
+     // create car with all the required field
      const handleCreateCar = useCallback((e) => {
           e.preventDefault();
           const CarObj = {
@@ -21,9 +23,9 @@ function CreateCar({ oemId }) {
           if (e.target.noOfAccidents.value) CarObj.noOfAccidents = +e.target.noOfAccidents.value;
           if (e.target.noOfprevBuyers.value) CarObj.noOfprevBuyers = +e.target.noOfprevBuyers.vlaue;
 
-          dispatch(createCarAction(CarObj));
+          dispatch(createCarAction(CarObj)); // call an action for the car doc creation
 
-          e.target.reset();
+          e.target.reset(); // reset the form
 
      }, [dispatch, oemId]);
 

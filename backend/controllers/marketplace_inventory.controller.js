@@ -4,11 +4,22 @@ const { marketplace_inventoryModel } = require('../models/marketplace_inventory.
  * Get all cars from Database
  * */
 const getAllCars = async (req, res) => {
+     const { q, color, minprice, maxprice, minmileage, maxmileage } = req.query;
+     const filter = {}
+
+     if (q) filter['oemSpec.model'] = { $regex: q, $options: "i" }; // for searching with model name
+     // if(color) filter['oemSpec.colors'] = 
+     if (minprice) filter['oemSpec.listPrice'] = { $gte: parseInt(minprice) }; // for minimum price
+     if (maxprice) filter['oemSpec.listPrice'] = { $lte: parseInt(maxprice) }; // for maximum price
+     if (minmileage) filter['oemSpec.mileage'] = { $gte: parseInt(minmileage) }; // for maximum mileage
+     if (maxmileage) filter['oemSpec.mileage'] = { $lte: parseInt(maxmileage) }; // for maximum mileage
+     
      try {
           // add populate and filter, searching
+          console.log('filter:', filter)
 
           // get cars data with OEM details and dealer's username
-          const marketplace_data = await marketplace_inventoryModel.find().populate('oemSpec').populate('dealer', 'username').exec();
+          const marketplace_data = await marketplace_inventoryModel.find(filter).populate('oemSpec').populate('dealer', 'username').exec();
           res.status(200).send({ message: "success", data: marketplace_data });
      } catch (error) {
           console.log('error:', error)

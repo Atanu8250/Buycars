@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { BsSearch } from 'react-icons/bs';
 import homeStyle from '../styles/Home.module.css';
 import style from '../styles/SellCar.module.css'
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { getAllOemsAction } from '../redux/oems/oems.actions';
 import CreateCar from '../components/CreateCar';
 
@@ -10,24 +10,32 @@ import CreateCar from '../components/CreateCar';
 function SellCar() {
      const dispatch = useDispatch();
      const { loading, data } = useSelector(store => store.oemsManager);
+     const searchRef = useRef(null);
      const [selectedOem, setSelectedOem] = useState("");
+     const [queryString, setQueryString] = useState("");
 
-     useEffect(() => {
-          dispatch(getAllOemsAction())
+     const handlesearch = useCallback(() => {
+          let url = "";
+          if (searchRef.current.value) url += `q=${searchRef.current.value}`
+          setQueryString(url);
      }, [])
 
+     useEffect(() => {
+          dispatch(getAllOemsAction(queryString))
+     }, [queryString])
 
-     return loading ? <h1>Loading...</h1> : (
+
+     return (
           <div style={style.container}>
                <div className={homeStyle.functionalities}>
                     <div className={homeStyle.search}>
-                         <input type="search" placeholder='Serach herer!' />
-                         <BsSearch />
+                         <input type="search" placeholder='Serach herer!' ref={searchRef} />
+                         <BsSearch onClick={handlesearch} />
                     </div>
                </div>
 
                {/* OEM specs */}
-               <div className={style['OEM-specs']}>
+               {loading ? <h1>Loading...</h1> : <div className={style['OEM-specs']}>
                     <table>
                          <caption>Original Equipment Manufacturers Specifications</caption>
                          <thead>
@@ -82,7 +90,7 @@ function SellCar() {
                               }
                          </tbody>
                     </table>
-               </div>
+               </div>}
 
                {/* show the create from only when you selected any OEM */}
                {

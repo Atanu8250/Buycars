@@ -18,14 +18,16 @@ const Card = ({ element }) => {
      const [isModalOpen, setIsModalOpen] = useState(false);
 
      const handleDelete = useCallback(() => {
-          dispatch(deleteCarAction(_id));
+          dispatch(deleteCarAction(_id)); // call the action for deleting specific car
      }, [_id, dispatch])
 
 
+     // close modal
      const closeModal = useCallback(() => {
           setIsModalOpen(false);
      }, [])
 
+     // open modal
      const openModal = useCallback(() => {
           setIsModalOpen(true);
      }, [])
@@ -81,6 +83,7 @@ const Card = ({ element }) => {
                          <span>{dealer?.username}</span>
 
                          <div className={Styles.dealer_buy_edit}>
+                              {/* If the user is the dealer then only the user can see the edit and delete button */}
                               {
                                    loggedInUser !== dealer?.username ?
                                         <div>

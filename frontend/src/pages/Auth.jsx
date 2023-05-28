@@ -7,7 +7,7 @@ import { signinAction, signupAction } from '../redux/auth/auth.actions';
 
 
 function Auth() {
-     const [showPassword, setShowPassword] = useState(false);
+     const [showPassword, setShowPassword] = useState(false); // for password hiding and showing
      const [signin, setSignin] = useState(true);
      const navigate = useNavigate();
 

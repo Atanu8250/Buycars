@@ -1,9 +1,14 @@
 const { oemSpecModel } = require('../models/oemSpec.model');
 
 const getAllOems = async (req, res) => {
+     const { q } = req.query;
+     const filter = {};
+
+     if (q) filter.model = { $regex: q, $options: "i" }  // searching query
+
      try {
           // get all OEM-specs from Databse
-          const OEMs = await oemSpecModel.find();
+          const OEMs = await oemSpecModel.find(filter);
           res.status(200).send({ message: 'Success', data: OEMs });
      } catch (error) {
           console.log('error:', error)
