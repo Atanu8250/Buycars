@@ -52,7 +52,7 @@ Clicking on the edit button, you will be able to see this type of modal provided
 ![edit-modal](https://github.com/Atanu8250/Buycars/assets/94675329/69276401-3590-4faf-a282-df9418ceec90)
 
 
-### :small_blue_diamond:  Page
+### :small_blue_diamond: Sell-Car Page
 Sell cars by choosing specific OEM (Original Equipment Manufacturer) and sell cars on the application
 
 ----
