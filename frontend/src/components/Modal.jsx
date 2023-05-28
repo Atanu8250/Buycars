@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import { useCallback } from 'react';
 import style from '../styles/Modal.module.css';

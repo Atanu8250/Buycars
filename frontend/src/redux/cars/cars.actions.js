@@ -152,7 +152,7 @@ export const deleteCarAction = (carId) => async (dispatch) => {
      dispatch({ type: carsTypes.CARS_LOADING })
 
      try {
-          const res = await fetch(`${import.meta.env.VITE_APP_SERVER_URL}/marketplace/:${carId}`, {
+          const res = await fetch(`${import.meta.env.VITE_APP_SERVER_URL}/marketplace/${carId}`, {
                method: 'DELETE',
                headers: {
                     'Content-Type': 'application/json',

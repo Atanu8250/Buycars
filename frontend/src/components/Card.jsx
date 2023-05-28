@@ -1,17 +1,26 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import Styles from "../styles/Card.module.css";
 import { AiFillEdit } from "react-icons/ai";
 import { MdDeleteOutline } from "react-icons/md";
 import Modal from "./Modal";
-import { useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
+import { useDispatch } from "react-redux";
+import { deleteCarAction } from "../redux/cars/cars.actions";
 
 
 
 const Card = ({ element }) => {
      const loggedInUser = sessionStorage.getItem("USERNAME");
+     const dispatch = useDispatch();
      // eslint-disable-next-line react/prop-types
-     const { carImage, dealer, majorScratches, noOfAccidents, noOfPreviousBuyers, odometer, oemSpec, originalPaint, registrationPlace } = element;
+     const { carImage, dealer, majorScratches, noOfAccidents, noOfPreviousBuyers, odometer, oemSpec, originalPaint, registrationPlace, _id } = element;
      const [isModalOpen, setIsModalOpen] = useState(false);
+
+     const handleDelete = useCallback(() => {
+          dispatch(deleteCarAction(_id));
+     }, [_id, dispatch])
+
 
      const closeModal = useCallback(() => {
           setIsModalOpen(false);
@@ -80,7 +89,7 @@ const Card = ({ element }) => {
                                         :
                                         <div>
                                              <button onClick={openModal}><bdi>Edit</bdi><AiFillEdit /></button>
-                                             <button><bdi>Delete</bdi><MdDeleteOutline /></button>
+                                             <button onClick={handleDelete}><bdi>Delete</bdi><MdDeleteOutline /></button>
                                         </div>
                               }
                          </div>
@@ -107,4 +116,4 @@ const Card = ({ element }) => {
      )
 }
 
-export default Card
+export default memo(Card);
